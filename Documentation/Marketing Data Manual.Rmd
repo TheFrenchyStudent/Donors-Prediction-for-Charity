@@ -1,0 +1,125 @@
+---
+title: "Project-report"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+## Introduction
+
+We have designed the following project in order to extract player informations like their gaming preferences, betting behaviour, spending nature etc. The main goal of the project is to shape a clear idea for every player, how he/she plays, when he/she plays most what is the risks he take. This further enables us to generate insights about the user and let us dig deeper into the player mindset and gives us a pattern for every player. These insights can be later utilized in order to develop a marketing plan for the players, encourage them to be more active in the games; which in turn will help the Gambling industry flourish.
+
+The data analyzed is from the period of February 1, 2005 to September 30, 2005. The data include betting behaviour of more than 40,000 bwin Internet sports subscribers and also players from various casino games.
+
+
+
+## How we proceded :
+
+From the available raw data-set, we first skimmed through the data variables, peruse the given data manual, understood the links between different datasets and finally brainstormed the potential variables that would provide accurate and efficient insights for every player. 
+
+## Starting with the codes...
+
+We used R studio as the base environment for the project. The first few crucial things were to install the most neccesary packages that would be required during the project. Here is the list of all the packages we used -
+
+install.packages("haven")      - To read in SAS datasets          
+
+install.packages("rpart")      - To        
+
+install.packages("dplyr")      - To do data manipulation 
+
+install.packages("tidyr")      - Tidying data       
+
+install.packages("lubridate")  - For manipulating date formats
+
+install.packages("timeDate")   - Used to split dates into weekdays and weekend       
+
+install.packages('readxl')     - Used to read excel files 
+
+
+
+
+## Key variables chosen for the basetable 
+
+
+With the large volume of data available with us, we deicided to calculate following variables for the customers to generate insights - 
+
+No_bets_weekend <- Total number of bets players made in weekends during the study period, i.e Saturday and Sunday
+
+No_bets_weekdays <- Total number of bets players made in weekdays during the study period, i.e Monday to Friday 
+
+Gender - Male/Female
+
+Recency - Number of days since the player last played, calculated taking the last day of September 2005 as reference 
+
+avg_spending_per_month - The mean amount the player has spent across the months taking the mean spending for every month and then the cumulative average
+
+Country - Country of residence of the player 
+
+Product_used_most - Name of the product/Type of the game the player likes most to play 
+
+Language - Primary Language of the player 
+
+Application - Portal which the player used to play 
+
+Max_spending_in_month - The month in which player betted most 
+
+Total_spent <- Total amount money the player spent in the study duaration 
+
+
+With the following variables, we further accomplished the visualizations on Shiny application.
+
+
+
+
+## Further understanding the key variables 
+
+The reason not to choose 50 odd variables for analysis and relatively fewer variables was to increase the qualitative content of the basetable and not just focusing on the quantity. We chose the variables according to the impact the variables will have for further marketing plannings. The key variables included the segregation of number of bets into weekdays and weekend. Its an important criteria which would highlight the playing behaviour of every customer and eventually will throw light on the overall population. The code we used to segregate into weekdays and week-end is shown below - 
+
+`` data_aggregation_4$weekday = wday(data_aggregation_4$Date, label=TRUE) 
+
+ data_aggregation_4$weekday2 = isWeekday(data_aggregation_4$Date, wday=1:5)
+ 
+ ``
+Code 1 assigns the date as the number of day in the particular week for year 2005, while code 2 segregates them into weekdays and weekend.
+
+Next variable the product_most_used by the player. The variable determines the player's personal preference which he/she plays most, which includes Sports book fixed Odds, Sports book Live action, poker among several other games.
+
+Further Average spending per month and Total money spent by the player tells the spending behaviour of the customer. The month with maximum spending derives some insights in which month the player was most active and risking most money.
+Later, Language, Country and gender gives some demographic information of the customer which will further allow us to understand the customer and will help explore more.
+
+## Basetable
+
+Undergoing several steps of codes, using various packages and their functions and with the help of some data cleaning, the final basetable was created.
+
+```{r, echo=FALSE}
+basetable_final <- read.csv("C:/Users/hpaliwal/Desktop/Open-source-programming-master/Group Assignment/basetable_update.csv")
+basetable_final <- basetable_final[-1]
+head(basetable_final)
+```
+
+
+
+
+
+
+## Conclusions 
+
+
+
+
+
+
+
+
+
+
+
+
+
